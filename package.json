@@ -1,0 +1,24 @@
+{
+  "name": "2021-mock-express",
+  "version": "1.0.0",
+  "description": "mock express server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FearMichael/2021-mock-express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FearMichael/2021-mock-express/issues"
+  },
+  "homepage": "https://github.com/FearMichael/2021-mock-express#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1"
+  }
+}
