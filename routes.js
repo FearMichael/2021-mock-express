@@ -1,9 +1,10 @@
 const router = require("express").Router();
-const todoController = require("./controllers/todos.controller");
+// const todoController = require("./controllers/todos.controller");
+const todoController = require("./controllers/todoController.controller");
 
 
 
-router.get("/todos", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
 
         const todos = await todoController.list();
@@ -14,7 +15,7 @@ router.get("/todos", async (req, res) => {
     }
 });
 
-router.get("/todos/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
         const { id } = req.params;
         const todo = await todoController.read(id);
@@ -25,7 +26,7 @@ router.get("/todos/:id", async (req, res) => {
     }
 });
 
-router.put("/todos/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
         const update = req.body;
         const { id } = req.params;
@@ -33,11 +34,14 @@ router.put("/todos/:id", async (req, res) => {
         res.send(todo);
 
     } catch (err) {
+        console.log(err);
         res.status(500).end();
     }
 });
 
-router.post("/todos", async (req, res) => {
+router.post("/", async (req, res) => {
+    // console.log(req);
+    // console.log(req.body);
     try {
         const create = req.body;
         const todo = await todoController.create(create);
@@ -48,7 +52,7 @@ router.post("/todos", async (req, res) => {
     }
 });
 
-router.delete("/todos/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     try {
         const { id } = req.params;
         const todos = await todoController.remove(id);
@@ -60,6 +64,7 @@ router.delete("/todos/:id", async (req, res) => {
 });
 
 router.get("/static", (req, res) => {
+
     res.sendFile(__dirname + "/index.html");
 })
 
