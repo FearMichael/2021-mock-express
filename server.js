@@ -1,5 +1,5 @@
 const express = require('express');
-const routes = require("./routes");
+const { todoRoutes, htmlRoutes, userRoutes } = require("./routes/index");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -8,7 +8,9 @@ app.use(express.urlencoded({ extended: true }));
 // parse urlencoded request body
 app.use(express.json());
 
-app.use("/api/todos", routes);
+app.use("/", htmlRoutes);
+app.use("/api/todos", todoRoutes);
+app.use("/api/users", userRoutes);
 // app.use("/api", routes);
 
 app.listen(PORT, () => {
